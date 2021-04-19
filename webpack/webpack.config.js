@@ -36,8 +36,8 @@ module.exports = {
         exclude: /node_modules/
       }
     ],
-    // devtool: 'cheap-module-eval-source-map'
   },
+  devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../index.html'),
