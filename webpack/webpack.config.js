@@ -14,9 +14,11 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:9090',
     'webpack/hot/only-dev-server',
+    'babel-polyfill',
+    'react-hot-loader/patch',
     path.resolve(__dirname, '../src/index.js')
   ],
-  
+
   output: {
     path: path.join(__dirname, "../dist"), // bundle生成(emit)到哪里
     // filename: "bundle.js", // bundle生成文件的名称
