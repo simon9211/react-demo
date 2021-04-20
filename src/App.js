@@ -8,10 +8,10 @@ export default class App extends Component {
       count: 1
     }
 
-    this.add = this.add.bind(this);
+    // this.add = this.add.bind(this);
   }
 
-  add () {
+  add = () => {
     this.setState({
       count: this.state.count + 1
     })
@@ -21,8 +21,7 @@ export default class App extends Component {
     return (
       <div>
         <td>
-          <tr>Hello React Project!</tr>
-          <tr>Hello React Project!</tr>
+          <tr>Hello React Project111</tr>
         </td>
         <h1>{this.state.count}</h1>
         {/* <button onClick={() => this.add()}> increase </button> */}

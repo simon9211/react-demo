@@ -12,11 +12,11 @@ module.exports = {
   // },
 
   entry: [
-    'webpack-dev-server/client?http://localhost:9090',
-    'webpack/hot/only-dev-server',
     'babel-polyfill',
     'react-hot-loader/patch',
-    path.resolve(__dirname, '../src/index.js')
+    'webpack-dev-server/client?http://localhost:9090',
+    'webpack/hot/only-dev-server',
+    path.join(__dirname, '../src/index.js')
   ],
 
   output: {
@@ -29,6 +29,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
+        // 抽离至 .babellrc
         // use: {
         //   loader: 'babel-loader',
         //   options: {

@@ -13,6 +13,7 @@ const server = new WebpackDevServer(compiler, {
     publicPath: "/",
     inline: true, // 自动刷新
     hot: true, // 开启热模块替换
+    // mode: development
 });
 server.listen(9090, 'localhost', function (err) {
     if (err) throw err
