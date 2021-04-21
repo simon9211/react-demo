@@ -1,20 +1,20 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 
 export default class App extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      count: 1
-    }
+      count: 1,
+    };
 
     // this.add = this.add.bind(this);
   }
 
   add = () => {
     this.setState({
-      count: this.state.count + 1
-    })
+      count: this.state.count + 1,
+    });
   }
 
   render() {

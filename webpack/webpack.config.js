@@ -1,4 +1,4 @@
-// https://www.cnblogs.com/shaozhu520/p/11180381.html 
+// https://www.cnblogs.com/shaozhu520/p/11180381.html
 // __dirname是node.js中的一个全局变量，它指向当前执行脚本所在的目录
 // path是node.js中提供的处理文件路径的小工具。 (http://www.runoob.com/nodejs/nodejs-path-module.html)
 const path = require('path');
@@ -16,13 +16,13 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:9090',
     'webpack/hot/only-dev-server',
-    path.join(__dirname, '../src/index.js')
+    path.join(__dirname, '../src/index.js'),
   ],
 
   output: {
-    path: path.join(__dirname, "../dist"), // bundle生成(emit)到哪里
+    path: path.join(__dirname, '../dist'), // bundle生成(emit)到哪里
     // filename: "bundle.js", // bundle生成文件的名称
-    filename: 'app/[name]_[hash:8].js'  // 打包后文件
+    filename: 'app/[name]_[hash:8].js', // 打包后文件
   },
   module: {
     rules: [
@@ -36,16 +36,22 @@ module.exports = {
         //     presets: [ "es2015",  "react"],
         //   }
         // },
-        exclude: /node_modules/
-      }
+        exclude: /node_modules/,
+      },
+      {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+      },
     ],
   },
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../index.html'),
-      inject: true
+      inject: true,
     }),
-    new webpack.HotModuleReplacementPlugin()
-  ]
-}
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+};
