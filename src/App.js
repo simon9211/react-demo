@@ -21,9 +21,9 @@ export default class App extends Component {
   render() {
     return (
       <div className='hello'>
-        <td>
-          <tr>Hello React Project111</tr>
-        </td>
+        <div className='hello'>
+          Hello React Project
+        </div>
         <h1>{this.state.count}</h1>
         {/* <button onClick={() => this.add()}> increase </button> */}
         <button onClick={this.add}> increase </button>
