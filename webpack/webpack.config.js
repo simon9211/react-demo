@@ -16,19 +16,25 @@ const webpackConfig = {
   //   main: path.join(__dirname, '../src/index.js'), // 指定入口，可以指定多个。参考webpack文档
   // },
 
-  entry: __DEV__ ? [
-    'babel-polyfill',
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:9090',
-    'webpack/hot/only-dev-server',
-    path.join(__dirname, '../src/index.jsx'),
-  ] : ['babel-polyfill',
-    path.resolve(__dirname, '../src/index.prod.js')],
+  entry: {
+    app: __DEV__ ? [
+      'babel-polyfill',
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:9090',
+      'webpack/hot/only-dev-server',
+      path.join(__dirname, '../src/index.jsx'),
+    ] : ['babel-polyfill',
+      path.resolve(__dirname, '../src/index.prod.js')],
+    vendor: ['react', 'react-dom', 'babel-polyfill'],
+  },
 
   output: {
     path: path.join(__dirname, '../dist'), // bundle生成(emit)到哪里
     // filename: "bundle.js", // bundle生成文件的名称
     filename: 'app/[name]_[hash:16].js', // 打包后文件
+  },
+  resolve: { // 指定第三方库目录，减少webpack寻找时间
+    modules: [path.resolve(__dirname, '../node_modules')],
   },
   module: {
     rules: [
@@ -89,12 +95,12 @@ webpackConfig.plugins = [
   new HtmlWebpackPlugin({
     template: path.resolve(__dirname, '../index.html'),
     inject: true,
-    // chunks: 'app',
-    // excludeChunks: ['main'],
-    // // 压缩选项
-    // minify: {
-    //   collapseWhitespace: true,
-    // },
+    chunks: 'app',
+    excludeChunks: ['main'],
+    // 压缩选项
+    minify: {
+      collapseWhitespace: true,
+    },
   }),
 ];
 
