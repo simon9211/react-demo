@@ -27,6 +27,7 @@ export default class App extends Component {
         <h1>{this.state.count}</h1>
         {/* <button onClick={() => this.add()}> increase </button> */}
         <button onClick={this.add}> increase </button>
+        <a href='#/home'>去detail</a>
       </div>
     );
   }
