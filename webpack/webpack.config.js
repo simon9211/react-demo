@@ -16,13 +16,13 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:9090',
     'webpack/hot/only-dev-server',
-    path.join(__dirname, '../src/index.js'),
+    path.join(__dirname, '../src/index.jsx'),
   ],
 
   output: {
     path: path.join(__dirname, '../dist'), // bundle生成(emit)到哪里
     // filename: "bundle.js", // bundle生成文件的名称
-    filename: 'app/[name]_[hash:8].js', // 打包后文件
+    filename: 'app/[name]_[hash:16].js', // 打包后文件
   },
   module: {
     rules: [
@@ -44,6 +44,35 @@ module.exports = {
         loader: 'eslint-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+        }],
+      },
+      {
+        test: /\.less$/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+        }, {
+          loader: 'less-loader',
+          options: {
+            sourceMap: true,
+          },
+        }],
+      },
+      // {
+      //   test: /\.(png|jpg)$/, // 配置静态文件解析
+      //   loader: 'url-loader?limit=8192',
+      // },
+      // {
+      //   test: /.scss$/,
+      //   loaders: ['style-loader', 'css-loader', 'sass-loader'],
+      // },
     ],
   },
   devtool: 'source-map',
@@ -51,6 +80,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../index.html'),
       inject: true,
+      // chunks: 'app',
+      // excludeChunks: ['main'],
+      // // 压缩选项
+      // minify: {
+      //   collapseWhitespace: true,
+      // },
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

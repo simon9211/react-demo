@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react';
+import './App.css';
 
 export default class App extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='hello'>
         <td>
           <tr>Hello React Project111</tr>
         </td>
