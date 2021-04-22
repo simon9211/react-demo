@@ -23,9 +23,11 @@ const webpackConfig = {
       'webpack-dev-server/client?http://localhost:9090',
       'webpack/hot/only-dev-server',
       path.join(__dirname, '../src/index.jsx'),
-    ] : ['babel-polyfill',
-      path.resolve(__dirname, '../src/index.prod.js')],
-    vendor: ['react', 'react-dom', 'babel-polyfill'],
+    ] : [
+      'babel-polyfill',
+      path.join(__dirname, '../src/index.jsx'),
+    ],
+    // vendor: ['react', 'react-dom', 'babel-polyfill'],
   },
 
   output: {
@@ -34,7 +36,8 @@ const webpackConfig = {
     filename: 'app/[name]_[hash:16].js', // 打包后文件
   },
   resolve: { // 指定第三方库目录，减少webpack寻找时间
-    modules: [path.resolve(__dirname, '../node_modules')],
+    modules: [path.join(__dirname, '../node_modules')],
+    alias: { 'react-dom': '@hot-loader/react-dom' },
   },
   module: {
     rules: [
@@ -58,11 +61,10 @@ const webpackConfig = {
       },
       {
         test: /\.css$/,
-        use: [{
-          loader: 'style-loader',
-        }, {
-          loader: 'css-loader',
-        }],
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
       },
       {
         test: /\.less$/,
@@ -83,7 +85,18 @@ const webpackConfig = {
       // },
       // {
       //   test: /.scss$/,
-      //   loaders: ['style-loader', 'css-loader', 'sass-loader'],
+      //   use: [
+      //     'style-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         module: true,
+      //         // importLoader: 1,
+      //       },
+      //     },
+      //     'sass-loader',
+      //   ],
+      //   // loaders: ['style-loader', 'css-loader', 'sass-loader'],
       // },
     ],
   },

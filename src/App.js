@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { Component } from 'react';
-import './App.css';
+// import styles from './App.scss';
+import './App.css'
 
 export default class App extends Component {
   constructor(props) {
@@ -21,8 +22,9 @@ export default class App extends Component {
   render() {
     return (
       <div className='hello'>
-        <div className='hello'>
-          Hello React Project
+        {/* <div className={styles.hello}> */}
+        <div>
+          Hello React Projectssaa
         </div>
         <h1>{this.state.count}</h1>
         {/* <button onClick={() => this.add()}> increase </button> */}

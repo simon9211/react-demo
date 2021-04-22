@@ -10,7 +10,7 @@ const localip = ip.address();
 // Default Configuration
 // ========================================================
 const config = {
-  env: process.env.NODE_ENV || 'development',
+  // env: process.env.NODE_ENV || 'development',
 
   // ----------------------------------
   // Project Structure
