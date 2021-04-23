@@ -31,7 +31,7 @@ const config = {
   // Compiler Configuration
   // ----------------------------------
   compiler_css_modules: true,
-  compiler_devtool: 'source-map',
+  compiler_devtool: 'inline-source-map', // 'source-map',
   compiler_hash_type: 'hash',
   compiler_fail_on_warning: false,
   compiler_quiet: false,
@@ -74,9 +74,9 @@ const config = {
 // ------------------------------------
 // N.B.: globals added here must _also_ be added to .eslintrc
 config.globals = {
-  'process.env': {
-    NODE_ENV: JSON.stringify(config.env),
-  },
+  // 'process.env': {
+  //   NODE_ENV: JSON.stringify(config.env),
+  // },
   NODE_ENV: config.env,
   __DEV__: config.env === 'development',
   __PROD__: config.env === 'production',

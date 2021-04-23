@@ -83,24 +83,44 @@ const webpackConfig = {
       //   test: /\.(png|jpg)$/, // 配置静态文件解析
       //   loader: 'url-loader?limit=8192',
       // },
-      // {
-      //   test: /.scss$/,
-      //   use: [
-      //     'style-loader',
-      //     {
-      //       loader: 'css-loader',
-      //       options: {
-      //         module: true,
-      //         // importLoader: 1,
-      //       },
-      //     },
-      //     'sass-loader',
-      //   ],
-      //   // loaders: ['style-loader', 'css-loader', 'sass-loader'],
-      // },
+      {
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+        // More information here https://webpack.js.org/guides/asset-modules/
+        type: 'asset',
+      },
+      {
+        test: /.scss$/,
+        // exclude: /\.module\.scss$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                compileType: 'module',
+              },
+            },
+          },
+          'sass-loader',
+        ],
+        // use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
     ],
   },
-  devtool: config.compiler_devtool,
+  devtool: __DEV__ ? config.compiler_devtool : false,
+  mode: __DEV__ ? 'development' : 'production',
+  performance: {
+    hints: false,
+  },
+  optimization: {
+    splitChunks: {
+      minSize: 10000,
+      maxSize: 250000,
+    },
+  },
 };
 
 webpackConfig.plugins = [

@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React, { Component } from 'react';
-// import styles from './App.scss';
-import './App.css'
+import baseStyles from './base.scss'
+import styles from './App.scss';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -21,15 +22,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className='hello'>
-        {/* <div className={styles.hello}> */}
+      <div className={styles.hello}>
         <div>
-          Hello React Projectssaa
+          Hello React Project i am Simon
         </div>
         <h1>{this.state.count}</h1>
         {/* <button onClick={() => this.add()}> increase </button> */}
         <button onClick={this.add}> increase </button>
-        <a href='#/home'>去detail</a>
+        <a style={{color: baseStyles.a}} href='#/home'>去detail</a>
       </div>
     );
   }

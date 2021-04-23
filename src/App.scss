@@ -1,0 +1,10 @@
+@import 'base.scss';
+
+.hello {
+  background: $colorBackground;
+
+  div{
+    color: black;
+    font-size: 30px;
+  }
+}
